@@ -14,12 +14,12 @@ func NewPTX() *PTX {
 
 type PTX struct{ bytes.Buffer }
 
-func (T *PTX) Println(args ...interface{}) (n int) {
-	return done.VE(fmt.Fprintln(T, args...)).Done()
+func (ptx *PTX) Println(args ...interface{}) (n int) {
+	return done.VE(fmt.Fprintln(ptx, args...)).Done()
 }
 
-func (T *PTX) Print(args ...interface{}) (n int) {
-	return done.VE(fmt.Fprint(T, args...)).Done()
+func (ptx *PTX) Print(args ...interface{}) (n int) {
+	return done.VE(fmt.Fprint(ptx, args...)).Done()
 }
 
 func NewPTS() *PTS {
@@ -28,10 +28,10 @@ func NewPTS() *PTS {
 
 type PTS struct{ strings.Builder }
 
-func (T *PTS) Println(args ...interface{}) (n int) {
-	return done.VE(fmt.Fprintln(T, args...)).Done()
+func (pts *PTS) Println(args ...interface{}) (n int) {
+	return done.VE(fmt.Fprintln(pts, args...)).Done()
 }
 
-func (T *PTS) Print(args ...interface{}) (n int) {
-	return done.VE(fmt.Fprint(T, args...)).Done()
+func (pts *PTS) Print(args ...interface{}) (n int) {
+	return done.VE(fmt.Fprint(pts, args...)).Done()
 }
