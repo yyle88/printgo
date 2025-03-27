@@ -6,6 +6,8 @@ import (
 	"strings"
 
 	"github.com/yyle88/done"
+	"github.com/yyle88/must"
+	"github.com/yyle88/rese"
 )
 
 func NewPTX() *PTX {
@@ -19,7 +21,9 @@ func (ptx *PTX) Println(args ...interface{}) (n int) {
 }
 
 func (ptx *PTX) Print(args ...interface{}) (n int) {
-	return done.VE(fmt.Fprint(ptx, args...)).Done()
+	n, err := fmt.Fprint(ptx, args...)
+	must.Done(err)
+	return n
 }
 
 func NewPTS() *PTS {
@@ -29,9 +33,11 @@ func NewPTS() *PTS {
 type PTS struct{ strings.Builder }
 
 func (pts *PTS) Println(args ...interface{}) (n int) {
-	return done.VE(fmt.Fprintln(pts, args...)).Done()
+	return rese.V1(fmt.Fprintln(pts, args...))
 }
 
 func (pts *PTS) Print(args ...interface{}) (n int) {
-	return done.VE(fmt.Fprint(pts, args...)).Done()
+	n, err := fmt.Fprint(pts, args...)
+	must.Done(err)
+	return n
 }
