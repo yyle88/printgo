@@ -26,6 +26,14 @@ func (ptx *PTX) Print(args ...interface{}) (n int) {
 	return n
 }
 
+func (ptx *PTX) Fprintf(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintf(ptx, format, args...))
+}
+
+func (ptx *PTX) Printf(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintf(ptx, format, args...))
+}
+
 func NewPTS() *PTS {
 	return &PTS{}
 }
@@ -40,4 +48,12 @@ func (pts *PTS) Print(args ...interface{}) (n int) {
 	n, err := fmt.Fprint(pts, args...)
 	must.Done(err)
 	return n
+}
+
+func (pts *PTS) Fprintf(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintf(pts, format, args...))
+}
+
+func (pts *PTS) Printf(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintf(pts, format, args...))
 }
