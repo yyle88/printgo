@@ -43,6 +43,20 @@ func TestPTS_Println(t *testing.T) {
 	require.Equal(t, "a"+"\n"+"lele88"+"\n"+"b"+"\n"+"c"+"\n", res)
 }
 
+func TestPTX_Print(t *testing.T) {
+	ptx := printgo.NewPTX()
+	ptx.Print("print")
+	ptx.Print("go")
+	require.Equal(t, "printgo", ptx.String())
+}
+
+func TestPTS_Print(t *testing.T) {
+	pts := printgo.NewPTS()
+	pts.Print("print")
+	pts.Print("go")
+	require.Equal(t, "printgo", pts.String())
+}
+
 func TestPTX_Fprintf(t *testing.T) {
 	ptx := printgo.NewPTX()
 	ptx.Fprintf("yyle%s", "88")
