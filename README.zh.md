@@ -12,9 +12,11 @@
 ---
 
 <!-- TEMPLATE (ZH) BEGIN: LANGUAGE NAVIGATION -->
+
 ## 英文文档
 
 [ENGLISH README](README.md)
+
 <!-- TEMPLATE (ZH) END: LANGUAGE NAVIGATION -->
 
 ## 核心特性
@@ -95,12 +97,14 @@ func main() {
 ### PTX vs PTS
 
 **PTX (bytes.Buffer)：**
+
 ```go
 ptx := printgo.NewPTX()
 ptx.Println("Using bytes.Buffer")
 ```
 
 **PTS (strings.Builder)：**
+
 ```go
 pts := printgo.NewPTS()
 pts.Println("Using strings.Builder")
@@ -109,35 +113,74 @@ pts.Println("Using strings.Builder")
 ### 格式化打印
 
 **Printf：**
+
 ```go
 ptx := printgo.NewPTX()
 ptx.Printf("Name: %s, Age: %d\n", "Alice", 30)
 ```
 
 **Fprintf：**
+
 ```go
 pts := printgo.NewPTS()
 pts.Fprintf("Total: %.2f", 123.456)
 ```
 
+**Printfln（格式化 + 换行）：**
+
+```go
+ptx := printgo.NewPTX()
+ptx.Printfln("Name: %s", "test")
+ptx.Printfln("Age: %d", 18)
+```
+
+## API 列表
+
+### PTX（基于 bytes.Buffer）
+
+| 方法                         | 说明             |
+| ---------------------------- | ---------------- |
+| `NewPTX()`                   | 创建 PTX 实例    |
+| `Print(args...)`             | 打印不换行       |
+| `Println(args...)`           | 打印并换行       |
+| `Printf(format, args...)`    | 格式化打印       |
+| `Fprintf(format, args...)`   | 格式化打印       |
+| `Printfln(format, args...)`  | 格式化打印并换行 |
+| `Fprintfln(format, args...)` | 格式化打印并换行 |
+| `String()`                   | 获取累积文本     |
+| `Bytes()`                    | 获取累积字节     |
+
+### PTS（基于 strings.Builder）
+
+| 方法                         | 说明             |
+| ---------------------------- | ---------------- |
+| `NewPTS()`                   | 创建 PTS 实例    |
+| `Print(args...)`             | 打印不换行       |
+| `Println(args...)`           | 打印并换行       |
+| `Printf(format, args...)`    | 格式化打印       |
+| `Fprintf(format, args...)`   | 格式化打印       |
+| `Printfln(format, args...)`  | 格式化打印并换行 |
+| `Fprintfln(format, args...)` | 格式化打印并换行 |
+| `String()`                   | 获取累积文本     |
+
 <!-- TEMPLATE (ZH) BEGIN: STANDARD PROJECT FOOTER -->
-<!-- VERSION 2025-09-26 07:39:27.188023 +0000 UTC -->
+<!-- VERSION 2025-11-25 03:52:28.131064 +0000 UTC -->
 
 ## 📄 许可证类型
 
-MIT 许可证。详见 [LICENSE](LICENSE)。
+MIT 许可证 - 详见 [LICENSE](LICENSE)。
 
 ---
 
-## 🤝 项目贡献
+## 💬 联系与反馈
 
 非常欢迎贡献代码！报告 BUG、建议功能、贡献代码：
 
-- 🐛 **发现问题？** 在 GitHub 上提交问题并附上重现步骤
-- 💡 **功能建议？** 创建 issue 讨论您的想法
-- 📖 **文档疑惑？** 报告问题，帮助我们改进文档
+- 🐛 **问题报告？** 在 GitHub 上提交问题并附上重现步骤
+- 💡 **新颖思路？** 创建 issue 讨论
+- 📖 **文档疑惑？** 报告问题，帮助我们完善文档
 - 🚀 **需要功能？** 分享使用场景，帮助理解需求
-- ⚡ **性能瓶颈？** 报告慢操作，帮助我们优化性能
+- ⚡ **性能瓶颈？** 报告慢操作，协助解决性能问题
 - 🔧 **配置困扰？** 询问复杂设置的相关问题
 - 📢 **关注进展？** 关注仓库以获取新版本和功能
 - 🌟 **成功案例？** 分享这个包如何改善工作流程
@@ -155,7 +198,7 @@ MIT 许可证。详见 [LICENSE](LICENSE)。
 4. **分支**：创建功能分支（`git checkout -b feature/xxx`）
 5. **编码**：实现您的更改并编写全面的测试
 6. **测试**：（Golang 项目）确保测试通过（`go test ./...`）并遵循 Go 代码风格约定
-7. **文档**：为面向用户的更改更新文档，并使用有意义的提交消息
+7. **文档**：面向用户的更改需要更新文档
 8. **暂存**：暂存更改（`git add .`）
 9. **提交**：提交更改（`git commit -m "Add feature xxx"`）确保向后兼容的代码
 10. **推送**：推送到分支（`git push origin feature/xxx`）
@@ -167,7 +210,7 @@ MIT 许可证。详见 [LICENSE](LICENSE)。
 
 ## 🌟 项目支持
 
-非常欢迎通过提交 Merge Request 和报告问题来为此项目做出贡献。
+非常欢迎通过提交 Merge Request 和报告问题来贡献此项目。
 
 **项目支持：**
 

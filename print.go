@@ -34,7 +34,7 @@ func NewPTX() *PTX {
 type PTX struct{ bytes.Buffer }
 
 // Println prints args with newline appended
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Println 打印参数并追加换行符
 // 返回写入的字节数，出错时 panic
@@ -43,7 +43,7 @@ func (ptx *PTX) Println(args ...interface{}) (n int) {
 }
 
 // Print prints args without newline
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Print 打印参数不追加换行符
 // 返回写入的字节数，出错时 panic
@@ -54,7 +54,7 @@ func (ptx *PTX) Print(args ...interface{}) (n int) {
 }
 
 // Fprintf formats and prints with custom format string
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Fprintf 使用自定义格式字符串格式化并打印
 // 返回写入的字节数，出错时 panic
@@ -63,12 +63,30 @@ func (ptx *PTX) Fprintf(format string, args ...interface{}) (n int) {
 }
 
 // Printf formats and prints with custom format string
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Printf 使用自定义格式字符串格式化并打印
 // 返回写入的字节数，出错时 panic
 func (ptx *PTX) Printf(format string, args ...interface{}) (n int) {
 	return rese.V1(fmt.Fprintf(ptx, format, args...))
+}
+
+// Printfln formats and prints with newline appended
+// Returns bytes written, panics on failure
+//
+// Printfln 格式化打印并追加换行符
+// 返回写入的字节数，出错时 panic
+func (ptx *PTX) Printfln(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintln(ptx, fmt.Sprintf(format, args...)))
+}
+
+// Fprintfln formats and prints with newline appended
+// Returns bytes written, panics on failure
+//
+// Fprintfln 格式化打印并追加换行符
+// 返回写入的字节数，出错时 panic
+func (ptx *PTX) Fprintfln(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintln(ptx, fmt.Sprintf(format, args...)))
 }
 
 // NewPTS creates PTS based on strings.Builder
@@ -88,7 +106,7 @@ func NewPTS() *PTS {
 type PTS struct{ strings.Builder }
 
 // Println prints args with newline appended
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Println 打印参数并追加换行符
 // 返回写入的字节数，出错时 panic
@@ -97,7 +115,7 @@ func (pts *PTS) Println(args ...interface{}) (n int) {
 }
 
 // Print prints args without newline
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Print 打印参数不追加换行符
 // 返回写入的字节数，出错时 panic
@@ -108,7 +126,7 @@ func (pts *PTS) Print(args ...interface{}) (n int) {
 }
 
 // Fprintf formats and prints with custom format string
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Fprintf 使用自定义格式字符串格式化并打印
 // 返回写入的字节数，出错时 panic
@@ -117,10 +135,28 @@ func (pts *PTS) Fprintf(format string, args ...interface{}) (n int) {
 }
 
 // Printf formats and prints with custom format string
-// Returns bytes written, panics on error
+// Returns bytes written, panics on failure
 //
 // Printf 使用自定义格式字符串格式化并打印
 // 返回写入的字节数，出错时 panic
 func (pts *PTS) Printf(format string, args ...interface{}) (n int) {
 	return rese.V1(fmt.Fprintf(pts, format, args...))
+}
+
+// Printfln formats and prints with newline appended
+// Returns bytes written, panics on failure
+//
+// Printfln 格式化打印并追加换行符
+// 返回写入的字节数，出错时 panic
+func (pts *PTS) Printfln(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintln(pts, fmt.Sprintf(format, args...)))
+}
+
+// Fprintfln formats and prints with newline appended
+// Returns bytes written, panics on failure
+//
+// Fprintfln 格式化打印并追加换行符
+// 返回写入的字节数，出错时 panic
+func (pts *PTS) Fprintfln(format string, args ...interface{}) (n int) {
+	return rese.V1(fmt.Fprintln(pts, fmt.Sprintf(format, args...)))
 }

@@ -12,9 +12,11 @@
 ---
 
 <!-- TEMPLATE (EN) BEGIN: LANGUAGE NAVIGATION -->
+
 ## CHINESE README
 
 [中文说明](README.zh.md)
+
 <!-- TEMPLATE (EN) END: LANGUAGE NAVIGATION -->
 
 ## Main Features
@@ -95,12 +97,14 @@ func main() {
 ### PTX vs PTS
 
 **PTX (bytes.Buffer):**
+
 ```go
 ptx := printgo.NewPTX()
 ptx.Println("Using bytes.Buffer")
 ```
 
 **PTS (strings.Builder):**
+
 ```go
 pts := printgo.NewPTS()
 pts.Println("Using strings.Builder")
@@ -109,32 +113,71 @@ pts.Println("Using strings.Builder")
 ### Format Printing
 
 **Printf:**
+
 ```go
 ptx := printgo.NewPTX()
 ptx.Printf("Name: %s, Age: %d\n", "Alice", 30)
 ```
 
 **Fprintf:**
+
 ```go
 pts := printgo.NewPTS()
 pts.Fprintf("Total: %.2f", 123.456)
 ```
 
+**Printfln (format + newline):**
+
+```go
+ptx := printgo.NewPTX()
+ptx.Printfln("Name: %s", "test")
+ptx.Printfln("Age: %d", 18)
+```
+
+## API Reference
+
+### PTX (bytes.Buffer based)
+
+| Method                       | Description                   |
+| ---------------------------- | ----------------------------- |
+| `NewPTX()`                   | Create new PTX instance       |
+| `Print(args...)`             | Print without newline         |
+| `Println(args...)`           | Print with newline            |
+| `Printf(format, args...)`    | Format and print              |
+| `Fprintf(format, args...)`   | Format and print              |
+| `Printfln(format, args...)`  | Format and print with newline |
+| `Fprintfln(format, args...)` | Format and print with newline |
+| `String()`                   | Get accumulated text          |
+| `Bytes()`                    | Get accumulated bytes         |
+
+### PTS (strings.Builder based)
+
+| Method                       | Description                   |
+| ---------------------------- | ----------------------------- |
+| `NewPTS()`                   | Create new PTS instance       |
+| `Print(args...)`             | Print without newline         |
+| `Println(args...)`           | Print with newline            |
+| `Printf(format, args...)`    | Format and print              |
+| `Fprintf(format, args...)`   | Format and print              |
+| `Printfln(format, args...)`  | Format and print with newline |
+| `Fprintfln(format, args...)` | Format and print with newline |
+| `String()`                   | Get accumulated text          |
+
 <!-- TEMPLATE (EN) BEGIN: STANDARD PROJECT FOOTER -->
-<!-- VERSION 2025-09-26 07:39:27.188023 +0000 UTC -->
+<!-- VERSION 2025-11-25 03:52:28.131064 +0000 UTC -->
 
 ## 📄 License
 
-MIT License. See [LICENSE](LICENSE).
+MIT License - see [LICENSE](LICENSE).
 
 ---
 
-## 🤝 Contributing
+## 💬 Contact & Feedback
 
 Contributions are welcome! Report bugs, suggest features, and contribute code:
 
-- 🐛 **Found a mistake?** Open an issue on GitHub with reproduction steps
-- 💡 **Have a feature idea?** Create an issue to discuss the suggestion
+- 🐛 **Mistake reports?** Open an issue on GitHub with reproduction steps
+- 💡 **Fresh ideas?** Create an issue to discuss
 - 📖 **Documentation confusing?** Report it so we can improve
 - 🚀 **Need new features?** Share the use cases to help us understand requirements
 - ⚡ **Performance issue?** Help us optimize through reporting slow operations
@@ -155,7 +198,7 @@ New code contributions, follow this process:
 4. **Branch**: Create a feature branch (`git checkout -b feature/xxx`).
 5. **Code**: Implement the changes with comprehensive tests
 6. **Testing**: (Golang project) Ensure tests pass (`go test ./...`) and follow Go code style conventions
-7. **Documentation**: Update documentation to support client-facing changes and use significant commit messages
+7. **Documentation**: Update documentation to support client-facing changes
 8. **Stage**: Stage changes (`git add .`)
 9. **Commit**: Commit changes (`git commit -m "Add feature xxx"`) ensuring backward compatible code
 10. **Push**: Push to the branch (`git push origin feature/xxx`).
